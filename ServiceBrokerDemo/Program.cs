@@ -1,10 +1,7 @@
 ﻿using SqlServiceBrokerUtil;
 using System;
-using System.Collections.Generic;
 using System.Data.SqlClient;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace ServiceBrokerDemo
 {
@@ -31,9 +28,9 @@ namespace ServiceBrokerDemo
                         .QueueMessages;
 
                     foreach (var message in messages)
-                    {
-                        var messageAsBodyAsString = BrokerUtility.Deserialize<string>(message.MessageBody);
-                        Console.WriteLine(messageAsBodyAsString);
+                    {                        
+                        var messageAsBodyAsString = Encoding.Unicode.GetString(message.MessageBody);
+                        Console.WriteLine($"({message.MessageEnqueueTime}) - {messageAsBodyAsString}");                        
                     }
                 }
 

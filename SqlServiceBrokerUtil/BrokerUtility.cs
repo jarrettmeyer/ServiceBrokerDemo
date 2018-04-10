@@ -43,9 +43,8 @@ namespace SqlServiceBrokerUtil
             {
                 using (var stream = new MemoryStream(bytes))
                 {
-                    return Encoding.Unicode.GetString(bytes);
-                    //var formatter = new BinaryFormatter();
-                    //return formatter.Deserialize(stream);
+                    var formatter = new BinaryFormatter();
+                    return formatter.Deserialize(stream);
                 }
             }
             else
